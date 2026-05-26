@@ -1,8 +1,13 @@
+"""
+Trainer Engine
+Part of the AD-STMGN framework.
+Handles model initialization, optimization, training steps, and evaluation metrics.
+"""
 import torch
 import torch.optim as optim
+import numpy as np
 import util_ad_stmgn as util
 from model_ad_stmgn import AD_STMGN
-import numpy as np
 
 class Trainer:
     def __init__(self, scaler_y, node_features, action_dim, d, num_nodes, tau_max, num_layers, out_dim, lrate, wdecay,

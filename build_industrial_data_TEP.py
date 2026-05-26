@@ -1,6 +1,11 @@
-import pandas as pd
-import numpy as np
+"""
+Data Preprocessing Script
+Part of the AD-STMGN framework.
+Handles the conversion of raw CSV files into processed tensor windows for training and testing.
+"""
 import os
+import numpy as np
+import pandas as pd
 
 def process_tep_files(data_dir="./data/TEP/", 
                       output_dir="./data/processed_tep/"):
@@ -12,9 +17,7 @@ def process_tep_files(data_dir="./data/TEP/",
     df_test_free = pd.read_csv(os.path.join(data_dir, "TEP_FaultFree_Testing.csv"))
     df_test_faulty = pd.read_csv(os.path.join(data_dir, "TEP_Faulty_Testing.csv"))
 
-    # ==============================================================
-    # Construct hybrid testing sequence: steady-state to fault transition
-    # ==============================================================
+
     print("Constructing hybrid testing sequence...")
     run_normal = df_test_free[df_test_free['simulationRun'] == 1].copy()
     run_faulty = df_test_faulty[df_test_faulty['simulationRun'] == 1].copy()

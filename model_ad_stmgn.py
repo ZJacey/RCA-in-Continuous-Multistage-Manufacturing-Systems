@@ -1,7 +1,12 @@
+"""
+Model Architecture Definition
+Part of the AD-STMGN framework.
+Contains the Action-Driven Graph Generator, Soft-Delay ST-Block, and main AD_STMGN network.
+"""
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import math
 
 # Module 1: Action-Driven Graph Generator
 class ActionGraphGenerator(nn.Module):
@@ -101,7 +106,6 @@ class SoftDelaySTBlock(nn.Module):
         H_out = self.layer_norm(Z + H)
 
         return H_out
-
 
 
 # Module 3: AD-STMGN Network
