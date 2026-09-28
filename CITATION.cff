@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this implementation, please cite this repository and the accompanying manuscript."
+title: "AD-STGN: Action-Conditioned Delay-Aware Spatio-Temporal Graph Network"
+type: software
+version: "1.0.0"
+date-released: "2026-09-28"
+authors:
+  - family-names: Zhang
+    given-names: Jiaqi
+  - family-names: Shi
+    given-names: Liangxing
+  - family-names: He
+    given-names: Zhen
+repository-code: "https://github.com/ZJacey/RCA-in-Continuous-Multistage-Manufacturing-Systems"
+license: MIT
+keywords:
+  - root cause analysis
+  - spatio-temporal graph neural networks
+  - industrial monitoring

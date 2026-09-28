@@ -1,0 +1,28 @@
+{
+  "target_xmeas": 35,
+  "target_unit": "PURGE",
+  "reference_paths": {
+    "FEED": [
+      "FEED",
+      "REACTOR",
+      "SEPARATOR",
+      "PURGE"
+    ],
+    "RCOOL": [
+      "RCOOL",
+      "REACTOR",
+      "SEPARATOR",
+      "PURGE"
+    ],
+    "SCOOL": [
+      "SCOOL",
+      "SEPARATOR",
+      "PURGE"
+    ],
+    "REACTOR": [
+      "REACTOR",
+      "SEPARATOR",
+      "PURGE"
+    ]
+  }
+}

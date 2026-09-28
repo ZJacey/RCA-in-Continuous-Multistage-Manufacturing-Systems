@@ -1,0 +1,14 @@
+fault_id,disturbance,source_unit
+1,"A/C feed ratio, B composition constant",FEED
+2,"B composition, A/C ratio constant",FEED
+3,D feed temperature,FEED
+4,Reactor cooling water inlet temperature,RCOOL
+5,Condenser cooling water inlet temperature,SCOOL
+6,A feed loss,FEED
+7,C header pressure loss,FEED
+8,A/B/C feed composition,FEED
+10,C feed temperature,FEED
+11,Reactor cooling water inlet temperature (random),RCOOL
+13,Reaction kinetics,REACTOR
+14,Reactor cooling water valve sticking,RCOOL
+15,Condenser cooling water valve sticking,SCOOL

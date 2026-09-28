@@ -1,0 +1,63 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx,booktabs,longtable,hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\begin{document}
+\begin{center}\Large\bfseries Supplementary Reference Paths and Evaluation Metadata\end{center}
+\textbf{AD-STGN}\par
+These definitions accompany the frozen v3.6 evaluation. They are exported from \texttt{tep\_meta\_final.py}; the machine-readable CSV and JSON files are supplied alongside this document. The held-out target is XMEAS(35), represented at the unit level by PURGE.
+\section*{S1. Ordered reference paths}
+The routes below define the reference unit sequences for ordered path recovery. They are task-specific evaluation annotations, not trajectories inferred by the model.
+\begin{center}\small
+\begin{tabular}{ll}\toprule Source unit & Ordered reference route \\\midrule
+FEED & FEED $\rightarrow$ REACTOR $\rightarrow$ SEPARATOR $\rightarrow$ PURGE \\
+RCOOL & RCOOL $\rightarrow$ REACTOR $\rightarrow$ SEPARATOR $\rightarrow$ PURGE \\
+SCOOL & SCOOL $\rightarrow$ SEPARATOR $\rightarrow$ PURGE \\
+REACTOR & REACTOR $\rightarrow$ SEPARATOR $\rightarrow$ PURGE \\
+\bottomrule\end{tabular}\end{center}
+\section*{S2. Unit-level process-influence reference graph}
+These 13 directed edges are used for distinct-edge evaluation. The category labels follow the frozen metadata. The graph includes indirect process influences and must not be interpreted as a list of immediate physical piping connections. A row denotes influence from the source unit to the target unit.
+\begin{center}\small
+\begin{tabular}{lll}\toprule Source & Target & Category \\\midrule
+FEED & REACTOR & direct material \\
+REACTOR & SEPARATOR & direct material \\
+SEPARATOR & COMPRESSOR & direct material \\
+COMPRESSOR & REACTOR & direct material \\
+SEPARATOR & PURGE & direct material \\
+SEPARATOR & STRIPPER & direct material \\
+SCOOL & SEPARATOR & energy coupling \\
+RCOOL & REACTOR & energy coupling \\
+SEPARATOR & REACTOR & recycle feedback \\
+COMPRESSOR & PURGE & recycle feedback \\
+REACTOR & PURGE & indirect propagation \\
+FEED & COMPRESSOR & indirect propagation \\
+RCOOL & STRIPPER & indirect propagation \\
+\bottomrule\end{tabular}\end{center}
+The separately supplied \texttt{tep\_search\_unit\_edges.csv} contains the ten allowed transitions retained in the search/support metadata. It is not interchangeable with the 13-edge evaluation graph.
+\clearpage
+\section*{S3. Fault scenarios and source-unit labels}
+Ten held-out realizations of each scenario form the 130-event evaluation partition. Source labels are defined at the physical-unit level.
+\begin{longtable}{lp{10cm}l}\toprule Fault & Programmed disturbance & Source \\\midrule\endhead
+IDV(1) & A/C feed ratio, B composition constant & FEED \\
+IDV(2) & B composition, A/C ratio constant & FEED \\
+IDV(3) & D feed temperature & FEED \\
+IDV(4) & Reactor cooling water inlet temperature & RCOOL \\
+IDV(5) & Condenser cooling water inlet temperature & SCOOL \\
+IDV(6) & A feed loss & FEED \\
+IDV(7) & C header pressure loss & FEED \\
+IDV(8) & A/B/C feed composition & FEED \\
+IDV(10) & C feed temperature & FEED \\
+IDV(11) & Reactor cooling water inlet temperature (random) & RCOOL \\
+IDV(13) & Reaction kinetics & REACTOR \\
+IDV(14) & Reactor cooling water valve sticking & RCOOL \\
+IDV(15) & Condenser cooling water valve sticking & SCOOL \\
+\bottomrule\end{longtable}
+\section*{S4. Provenance and conventions}
+Node indices in the sensor mapping are zero-based; XMEAS and XMV identifiers retain the original one-based numbering. XMEAS(35) is excluded from the 40 graph variables. Directed CSV edges use source-to-target ordering; adjacency matrices use row $i$, column $j$ for the edge $j\to i$.
+
+Process reference: J.~J.~Downs and E.~F.~Vogel. A plant-wide industrial process control problem. \emph{Computers \& Chemical Engineering}, 17(3), 245--255 (1993). \url{https://doi.org/10.1016/0098-1354(93)80018-I}.
+
+The unit aggregation, ordered routes, and process-influence categories are the task-specific definitions supplied with this implementation. This export does not constitute additional independent physical validation.
+\end{document}

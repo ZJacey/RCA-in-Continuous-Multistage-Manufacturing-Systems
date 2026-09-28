@@ -1,0 +1,14 @@
+source_unit,target_unit,category
+FEED,REACTOR,direct_material
+REACTOR,SEPARATOR,direct_material
+SEPARATOR,COMPRESSOR,direct_material
+COMPRESSOR,REACTOR,direct_material
+SEPARATOR,PURGE,direct_material
+SEPARATOR,STRIPPER,direct_material
+SCOOL,SEPARATOR,energy_coupling
+RCOOL,REACTOR,energy_coupling
+SEPARATOR,REACTOR,recycle_feedback
+COMPRESSOR,PURGE,recycle_feedback
+REACTOR,PURGE,indirect_propagation
+FEED,COMPRESSOR,indirect_propagation
+RCOOL,STRIPPER,indirect_propagation

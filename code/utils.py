@@ -1,14 +1,11 @@
-"""
-Utility Functions
-Part of the AD-STMGN framework.
-Includes DataLoader, StandardScaler, and Masked Evaluation Metrics.
-"""
 import numpy as np
 import torch
 
-# Data Loader
 class DataLoader(object):
     def __init__(self, xs, us, ys, batch_size, pad_with_last_sample=True):
+        """
+        Batch loader that aligns sensor features (xs), actions (us) and quality targets (ys).
+        """
         self.batch_size = batch_size
         self.current_ind = 0
         if pad_with_last_sample:
@@ -44,9 +41,10 @@ class DataLoader(object):
                 self.current_ind += 1
         return _wrapper()
 
-
-# Standard Scaler
 class StandardScaler:
+    """
+    Standardisation helper with an inverse transform for physical-scale errors.
+    """
     def __init__(self, mean, std):
         self.mean = mean
         self.std = std
@@ -57,8 +55,7 @@ class StandardScaler:
     def inverse_transform(self, data):
         return (data * self.std) + self.mean
 
-
-# Evaluation Metrics
+# Evaluation metrics (NaN entries are ignored)
 def masked_mse(preds, labels, null_val=np.nan):
     if np.isnan(null_val):
         mask = ~torch.isnan(labels)
@@ -96,6 +93,7 @@ def masked_mape(preds, labels, null_val=np.nan):
     mask = mask.float()
     mask /= torch.mean((mask))
     mask = torch.where(torch.isnan(mask), torch.zeros_like(mask), mask)
+    # Avoid division by zero
     loss = torch.abs(preds - labels) / torch.clamp(torch.abs(labels), min=1e-4)
     loss = loss * mask
     loss = torch.where(torch.isnan(loss), torch.zeros_like(loss), loss)
