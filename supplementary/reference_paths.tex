@@ -7,7 +7,7 @@
 \begin{document}
 \begin{center}\Large\bfseries Supplementary Reference Paths and Evaluation Metadata\end{center}
 \textbf{AD-STGN}\par
-These definitions accompany the frozen v3.6 evaluation. They are exported from \texttt{tep\_meta\_final.py}; the machine-readable CSV and JSON files are supplied alongside this document. The held-out target is XMEAS(35), represented at the unit level by PURGE.
+These definitions accompany the reported evaluation. They are exported from \texttt{code/tep\_meta.py}; the machine-readable CSV and JSON files are supplied alongside this document. The held-out target is XMEAS(35), represented at the unit level by PURGE.
 \section*{S1. Ordered reference paths}
 The routes below define the reference unit sequences for ordered path recovery. They are task-specific evaluation annotations, not trajectories inferred by the model.
 \begin{center}\small
@@ -18,7 +18,7 @@ SCOOL & SCOOL $\rightarrow$ SEPARATOR $\rightarrow$ PURGE \\
 REACTOR & REACTOR $\rightarrow$ SEPARATOR $\rightarrow$ PURGE \\
 \bottomrule\end{tabular}\end{center}
 \section*{S2. Unit-level process-influence reference graph}
-These 13 directed edges are used for distinct-edge evaluation. The category labels follow the frozen metadata. The graph includes indirect process influences and must not be interpreted as a list of immediate physical piping connections. A row denotes influence from the source unit to the target unit.
+These 13 directed edges are used for distinct-edge evaluation. The category labels follow the given metadata. The graph includes indirect process influences and must not be interpreted as a list of immediate physical piping connections. A row denotes influence from the source unit to the target unit.
 \begin{center}\small
 \begin{tabular}{lll}\toprule Source & Target & Category \\\midrule
 FEED & REACTOR & direct material \\
